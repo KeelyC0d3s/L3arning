@@ -19,6 +19,8 @@ import matplotlib.pyplot as plt
 #plt.plot(l , l**2)
 #plt.show()
 
+#Ok, now for the homework. 
+
 x=np.arange(0.0, 4.0)
 
 print(x)
@@ -27,6 +29,10 @@ plt.plot(x, x)
 plt.plot(x, x**2)
 plt.plot(x, x**3)
 plt.show()
+
+#Essentially what I did was assume each function f(x), f(g), f(h) was
+#its own plot. I then used the same program as demonstrated in the video
+#but using the values given in the homework assignment.
 
 
 
