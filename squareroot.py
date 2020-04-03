@@ -45,6 +45,9 @@ if __name__ == "__main__" :
   
     print(squareRoot(n, l))
 
+#I'll be honest, I still don't completely understand this.
+#I searched the internet for Newton Method, square root Python
+#and the above program is what I found. I'll need to spend more time with it.
 
 
 
