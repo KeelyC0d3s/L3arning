@@ -17,7 +17,7 @@
 
 #Libraries used: pandas, Numpy, seaborn
 import pandas as pd
-import numpy as numpy
+import numpy as np
 import seaborn as sns
 
 #Downloaded iris dataset from https://tinyurl.com/y8fovkyq
@@ -26,4 +26,126 @@ iris_data = pd.read_csv('tableconvert_csv_xin5ac.csv')
 
 iris_data.columns = ['sepal_length', 'sepal_width' , 'petal_length', 'petal_width', 'species']
 
-iris_data.head(10)
+print(iris_data)
+
+#Gathered a summary of the data (count, mean, std deviation, minumin, 25%, 50%, 75%, maximum)
+#Used call chaining to make code look pretty.
+
+summary = iris_data.describe().transpose().head()
+print(summary)
+
+#Displaying the data using various visualisations to represent all the variables.
+#First, box plots.
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+title="Compare Distributions of Sepal Length"
+
+sns.boxplot(x="species", y="sepal_length", data=iris_data)
+
+# increasing font size
+plt.title(title, fontsize=26)
+# Show the plot
+plt.show()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+title="Compare Distributions of Sepal Width"
+
+sns.boxplot(x="species", y="sepal_width", data=iris_data)
+
+plt.title(title, fontsize=26)
+
+plt.show()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+title="Compare Distributions of Petal Length"
+
+sns.boxplot(x="species", y="petal_length", data=iris_data)
+
+plt.title(title, fontsize=26)
+
+plt.show()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+title="Compare Distributions of Petal Width"
+
+sns.boxplot(x="species", y="petal_width", data=iris_data)
+
+plt.title(title, fontsize=26)
+
+plt.show()
+
+#Now, scatterplots!
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+title="Compare Distributions of Sepal Length Scatterplot"
+
+sns.scatterplot(x="species", y="sepal_length", data=iris_data)
+
+plt.title(title, fontsize=26)
+
+plt.show()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+title="Compare Distributions of Sepal width Scatterplot"
+
+sns.scatterplot(x="species", y="sepal_width", data=iris_data)
+
+plt.title(title, fontsize=26)
+
+plt.show()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+title="Compare Distributions of Petal Length Scatterplot"
+
+sns.scatterplot(x="species", y="petal_length", data=iris_data)
+
+plt.title(title, fontsize=26)
+
+plt.show()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+title="Compare Distributions of Petal Width Scatterplot"
+
+sns.scatterplot(x="species", y="petal_width", data=iris_data)
+
+plt.title(title, fontsize=26)
+
+plt.show()
+
+#Histograms
+
+
+
+
+
