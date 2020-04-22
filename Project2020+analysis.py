@@ -145,7 +145,11 @@ plt.show()
 
 #Histograms
 
+import seaborn as sns
+import matplotlib.pyplot as plt
 
+sns.pairplot(iris_data, hue="species", palette="GnBu_d", markers=["o", "s", "D"])
 
+plt.show()
 
 
