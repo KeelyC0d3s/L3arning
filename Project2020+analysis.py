@@ -36,6 +36,9 @@ print(summary)
 
 #Displaying the data using various visualisations to represent all the variables.
 #First, box plots.
+#Boxplots are useful because they offer a quick and visually pleasing way to compare data.[1][11]
+#In this case, I have four separate box plots
+#First, comparing sepal length across all three species.
 
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -49,7 +52,7 @@ sns.boxplot(x="species", y="sepal_length", data=iris_data)
 plt.title(title, fontsize=26)
 # Show the plot
 plt.show()
-
+#Then, comparing sepal width across all three species
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -63,6 +66,7 @@ plt.title(title, fontsize=26)
 
 plt.show()
 
+#Comparing petal length across all three species
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -76,6 +80,7 @@ plt.title(title, fontsize=26)
 
 plt.show()
 
+#And finally, comparing petal width across all three species
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -90,61 +95,130 @@ plt.title(title, fontsize=26)
 plt.show()
 
 #Now, scatterplots!
+#Scatterplots didn't work out properly my first go.
+#First, again comparing sepal length across all three species
+#import seaborn as sns
+#import matplotlib.pyplot as plt
+
+#sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+#title="Compare Distributions of Sepal Length Scatterplot"
+
+#sns.scatterplot(x="species", y="sepal_length", data=iris_data)
+
+#plt.title(title, fontsize=26)
+
+#plt.show()
+
+#Comparing sepal width across all three species
+#import seaborn as sns
+#import matplotlib.pyplot as plt
+
+#sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+#title="Compare Distributions of Sepal width Scatterplot"
+
+#sns.scatterplot(x="species", y="sepal_width", data=iris_data)
+
+#plt.title(title, fontsize=26)
+
+#plt.show()
+
+#Comparing petal width across all three species
+#import seaborn as sns
+#import matplotlib.pyplot as plt
+
+#sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+#title="Compare Distributions of Petal Length Scatterplot"
+
+#sns.scatterplot(x="species", y="petal_length", data=iris_data)
+
+#plt.title(title, fontsize=26)
+
+#plt.show()
+
+#And finally, comparing petal width across all three species.
+#import seaborn as sns
+#import matplotlib.pyplot as plt
+
+#sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+
+#title="Compare Distributions of Petal Width Scatterplot"
+
+#sns.scatterplot(x="species", y="petal_width", data=iris_data)
+
+#plt.title(title, fontsize=26)
+
+#plt.show()
+#Preious scatterplot attempt did not yield the results I was looking for.
+
+#Scatterplots take 2!
 
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+#plt.figure()
+#fig,ax=plt.subplots(1,2,figsize=(17, 9))
+#iris_data.plot(x="sepal_length",y="sepal_width",kind="scatter",ax=ax[0],sharex=False,sharey=False,label="sepal",color='r')
+#iris_data.plot(x="petal_length",y="petal_width",kind="scatter",ax=ax[1],sharex=False,sharey=False,label="petal",color='b')
+#ax[0].set(title='Sepal comparasion ', ylabel='sepal-width')
+#ax[1].set(title='Petal Comparasion',  ylabel='petal-width')
+#ax[0].legend()
+#ax[1].legend()
 
-title="Compare Distributions of Sepal Length Scatterplot"
+#plt.show()
 
-sns.scatterplot(x="species", y="sepal_length", data=iris_data)
 
-plt.title(title, fontsize=26)
+from bokeh.plotting import figure, output_file, show
+output_file("test1.html")
 
-plt.show()
+color1 = '#FF1493'
+color2 = '#9400D3'
+color3 = '#008080'
+    
 
-import seaborn as sns
-import matplotlib.pyplot as plt
+colormap = {'Setosa': color1, 'Versicolor': color2, 'Virginica': color3}
+colors = [colormap[x] for x in iris_data['species']]
 
-sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
+#Comparing Petal Width and Petal Length across all three species
+p = figure(title = "Petal Width and Petal Length")
+p.xaxis.axis_label = 'Petal Length'
+p.yaxis.axis_label = 'Petal Width'
+p.legend.location = "top_left"
 
-title="Compare Distributions of Sepal width Scatterplot"
+p.diamond(iris_data["petal_length"], iris_data["petal_width"],color=colors, fill_alpha=0.2, size=10)
 
-sns.scatterplot(x="species", y="sepal_width", data=iris_data)
+show(p)
 
-plt.title(title, fontsize=26)
+#Comparing Sepal Width and Sepal Length across all three species
+from bokeh.plotting import figure, output_file, show
+output_file("test2.html")
 
-plt.show()
+#adding colors
+colormap = {'Setosa': color1, 'Versicolor': color2, 'Virginica': color3}
+colors = [colormap[x] for x in iris_data['species']]
 
-import seaborn as sns
-import matplotlib.pyplot as plt
+#adding labels
+p = figure(title = "Sepal Width and Sepal Length")
+p.xaxis.axis_label = 'Sepal Length'
+p.yaxis.axis_label = 'Sepal Width'
 
-sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
 
-title="Compare Distributions of Petal Length Scatterplot"
+p.circle(iris_data["sepal_length"], iris_data["sepal_width"],
+         color=colors, fill_alpha=0.2, size=10)
 
-sns.scatterplot(x="species", y="petal_length", data=iris_data)
 
-plt.title(title, fontsize=26)
+show(p)
 
-plt.show()
 
-import seaborn as sns
-import matplotlib.pyplot as plt
 
-sns.set(style="whitegrid", palette="BuGn_r", rc={'figure.figsize':(11.7,8.27)})
 
-title="Compare Distributions of Petal Width Scatterplot"
-
-sns.scatterplot(x="species", y="petal_width", data=iris_data)
-
-plt.title(title, fontsize=26)
-
-plt.show()
 
 #Histograms
-
+#I decided to use a pairplot here because:
+#"This creates a matrix of axes and shows the relationship for each pair of columns in a DataFrame. By default, it also draws the univariate distribution of each variable on the diagonal axes"[12]
+#That way, we have all data points aailable to us in one place to analyse.
 import seaborn as sns
 import matplotlib.pyplot as plt
 
